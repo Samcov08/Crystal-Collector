@@ -1,12 +1,22 @@
-var redcrystal = 0;
-var yellowcrystal = 0;
-var greencrystal = 0;
-var bluecrystal = 0;
+var crystal = {
+    blue: {
+        value: 0
+    },
+    red: {
+        value: 0
+    },
+    green: {
+        value: 0
+    },
+    yellow: {
+        value: 0
+    }
+};
 
 var wins = 0;
 var losses = 0;
-var pointsToGo = 0;
-var totalPoints = 0;
+var targetScore = 0;
+var yourScore = 0;
 
 
 var getRandom = function(min, max) {
@@ -14,32 +24,40 @@ var getRandom = function(min, max) {
 }
 
 function gameStart() {
+    //rest current score
     var currentScore = 0;
+    //set a new target score
     var targetNumber = getRandom(19, 120);
+    //set variables to crystals
+    crystal.red.value = getRandom(1, 12);
+    crystal.yellow.value = getRandom(1, 12);
+    crystal.green.value = getRandom(1, 12);
+    crystal.blue.value = getRandom(1, 12);
 
-    redcrystal = getRandom(1, 12);
-    yellowcrystal = getRandom(1, 12);
-    bluecrystal = getRandom(1, 12);
-    greencrystal = getRandom(1, 12);
+
+
+    console.log("Target Score:" + targetScore);
+    console.log("Blue" + crystal.blue.value);
+    console.log("Red" + crystal.red.value);
+    console.log("Yellow" + crystal.yellow.value);
+    console.log("Green" + crystal.green.value);
+
+    var addValue = function(crystal) {
+        currentScore = currentScore + crystal.value
+    }
+
 }
-//  pointsToGo = 0;
-//userGuesses = [];
-//winsText.textContent = "wins: " + wins;
-//lossesText.textContent = "losses: " + losses;
 
-
-$("#red").on("click", function() {}
-        $("#yellow").on("click", function() {
-
-            }
-            $("#green").on("click", function() {
-
-                }
-                $("#blue").on("click", function() {
-
-                    }
-
-                    //var directionsText = document.getElementById("directions-text");
-                    //var winsText = document.getElementById("wins-text");
-                    //var lossesText = document.getElementById("losses-text");
-                    //var totalPointsText = document.getElementById("totalPoints-text");
+gameStart();
+$("#red").click(function() {
+        addValue(crystal.red);
+    }),
+    $("#yellow").click(function() {
+        addValue(crystal.yellow);
+    }),
+    $("#green").click(function() {
+        addValue(crystal.green);
+    }),
+    $("#blue").click(function() {
+        addValue(crystal.blue);
+    })
